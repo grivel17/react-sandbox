@@ -8,12 +8,11 @@ export const useMessage = (forum) => {
         let didCancel = false;
         setError(null);
         if (forum) {
-          ;(async () =>
+          (async () =>
                 {
                     try {
                         setIsLoading(true);
                         const res = await fetch(`/messages/${forum}`)
-                        console.log("fetch sukces");
                         if(!res.ok) {
                             const textError = await res.text();
                             throw new Error(`Nie można wczytać wiadomości dla ${forum} ${textError}`)
@@ -21,7 +20,6 @@ export const useMessage = (forum) => {
                         const body = await res.json();
                         if(!didCancel) {
                             setData(body);
-                            console.log("body sukces");
                         }
                     } catch (e) {
                         setError(e);
@@ -35,8 +33,6 @@ export const useMessage = (forum) => {
         }
         return () => { didCancel = true }
     }, [forum]);
-
-    console.log(data, isLoading, error);
     return {data, isLoading, error};
 };
 
