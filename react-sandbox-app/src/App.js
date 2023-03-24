@@ -1,7 +1,19 @@
 import logo from './logo.svg';
 import './App.css';
+import DataFetchSandbox from './dataUtils/DataFetchSandbox';
+import { useMessage } from "./dataUtils/customHooks";
 
 function App() {
+
+  const FORUM = 'nasa'
+
+  const {
+    data: messages,
+    isLoading: loadingMessage,
+    error: errorMessages
+  } = useMessage(FORUM);
+
+
   return (
     <div className="App">
       <header className="App-header">
