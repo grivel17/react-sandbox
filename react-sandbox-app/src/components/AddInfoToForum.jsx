@@ -3,12 +3,29 @@ import {ForumContext} from "../contexts/Contexts";
 
 const AddInfoToForum = () => {
 
-    const { forum: forumNameForForm } = useContext(ForumContext);
+    const { forum: forumNameForForm,
+            author: forumAuthor,
+            setAuthor: setForumAuthor
+    } = useContext(ForumContext);
 
+    const onChangeHandler = (e, setType) => {
+        setType(e.target.value)
+    }
+    console.log(forumAuthor);
     return (
-        <div>
-            { `Formularz i test useContext ${forumNameForForm} `}
-        </div>
+
+        <>
+            <h3>Dodaj użytkownika i wpis na forum</h3>
+            <div>
+                <input
+                    type="text"
+                    value={forumAuthor}
+                    placeholder="Autor"
+                    onChange={(e) => {onChangeHandler(e, setForumAuthor)}}
+                />
+
+            </div>
+        </>
     );
 };
 

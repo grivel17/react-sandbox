@@ -17,12 +17,20 @@ function App() {
 
     const [text, setText] = useState();
     const [author, setAuthor] = useState();
+    const [createErrorMessages, setcreateErrorMessages] = useState();
 
   return (
     <div className="App">
       <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
-        <ForumContext.Provider value={{forum, setForum, messages, loadingMessage, errorMessages}}>
+        <ForumContext.Provider value={{
+            author,
+            setAuthor,
+            forum,
+            setForum,
+            messages,
+            loadingMessage,
+            errorMessages}}>
           <ShowForum />
         </ForumContext.Provider>
 
