@@ -15,6 +15,9 @@ function App() {
     error: errorMessages
   } = useMessage(forum);
 
+    const [text, setText] = useState();
+    const [author, setAuthor] = useState();
+
   return (
     <div className="App">
       <header className="App-header">

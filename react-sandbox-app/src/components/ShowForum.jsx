@@ -1,5 +1,6 @@
 import React, {useContext} from 'react';
 import {ForumContext} from "../contexts/Contexts";
+import AddInfoToForum from "./AddInfoToForum";
 
 const ShowForum = () => {
 
@@ -17,6 +18,9 @@ const ShowForum = () => {
             <h1>
                 {`And the forum name is ${forumName}`}
             </h1>
+            <div>
+                <AddInfoToForum />
+            </div>
             <div>
                 {'Forum Content Here'}
                 <dl>
