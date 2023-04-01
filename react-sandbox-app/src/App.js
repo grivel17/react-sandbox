@@ -8,16 +8,19 @@ import {ForumContext} from "./contexts/Contexts";
 function App() {
 
     const [forum, setForum] = useState('nasa');
-
-    const {
-    data: messages,
-    isLoading: loadingMessage,
-    error: errorMessages
-  } = useMessage(forum);
-
     const [text, setText] = useState();
     const [author, setAuthor] = useState();
-    const [createErrorMessages, setcreateErrorMessages] = useState();
+    const [createErrorMessages, setCreateErrorMessages] = useState();
+    const [stateVersion, setStateVersion] = useState(0);
+    // todo - count forum info and add as initial state
+
+    const {
+            data: messages,
+            isLoading: loadingMessage,
+            error: errorMessages
+        } = useMessage(forum);
+
+
 
   return (
     <div className="App">
@@ -26,15 +29,20 @@ function App() {
         <ForumContext.Provider value={{
             author,
             setAuthor,
+            text,
+            setText,
             forum,
             setForum,
             messages,
             loadingMessage,
-            errorMessages}}>
+            errorMessages,
+            createErrorMessages,
+            setCreateErrorMessages,
+            setStateVersion}}>
           <ShowForum />
         </ForumContext.Provider>
 
-
+      {/*todo - final cleaning add md explanation  what recipes you've made  */}
       {/*    {*/}
       {/*        errorMessages ? (*/}
       {/*            <div>*/}

@@ -5,7 +5,11 @@ const AddInfoToForum = () => {
 
     const { forum: forumNameForForm,
             author: forumAuthor,
-            setAuthor: setForumAuthor
+            setAuthor: setForumAuthor,
+            text: forumText,
+            setText: setForumText,
+            createErrorMessages,
+            setCreateErrorMessages
     } = useContext(ForumContext);
 
     const onChangeHandler = (e, setType) => {
@@ -23,8 +27,28 @@ const AddInfoToForum = () => {
                     placeholder="Autor"
                     onChange={(e) => {onChangeHandler(e, setForumAuthor)}}
                 />
+                <div>
+                <textarea
+                    value={forumText}
+                    placeholder="Wiadomość"
+                    onChange={(e) => {setForumText(e.target.value)}}
+                />
+                </div>
 
             </div>
+            <button
+                onClick={async () => {
+                    try {
+                        await ['kod do przesyłania wiadomości na serwer']
+                        setForumText('')
+                        setForumAuthor('')
+                    } catch (e) {
+                        setCreateErrorMessages(e);
+                    }
+                }}
+            >
+                Opublikuj
+            </button>
         </>
     );
 };
